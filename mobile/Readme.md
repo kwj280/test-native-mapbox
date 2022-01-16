@@ -25,7 +25,7 @@ if you are asked to type package name, you can give following name:
 `io.expo.testMapbox` 
 
 ## More Resources
-React Native Expo installation
+React Native Mapbox installation on Expo
 https://github.com/react-native-mapbox-gl/maps/blob/master/plugin/install.md
 
 Adding custom native code to Expo
