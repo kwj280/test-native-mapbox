@@ -9,7 +9,8 @@ This is a test project importing Mapbox library Expo app
 3. install Java JDK
   - run `java --version` on terminal to see if Java is installed and recognized
 4. install Expo go app on your android device
-5. connect your android app to development desktop/lapto using usb
+5. connect your android app to development desktop/lapto using usb and enable usb debugging on your android device
+  - please see: https://www.embarcadero.com/starthere/xe5/mobdevsetup/android/en/enabling_usb_debugging_on_an_android_device.html
 6. under /android folder, create `local.properties` file and specify android sdk directory
   - please see https://stackoverflow.com/questions/27620262/sdk-location-not-found-define-location-with-sdk-dir-in-the-local-properties-fil
 
