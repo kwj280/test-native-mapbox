@@ -1,45 +1,53 @@
-import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Button, Image, Dimensions} from 'react-native';
-import { BarCodeScanner } from 'expo-barcode-scanner';
+import React, { useState, useEffect } from "react";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Button,
+  Image,
+  Dimensions,
+} from "react-native";
+import { BarCodeScanner } from "expo-barcode-scanner";
 
+
+//test
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
+    flexDirection: "column",
+    justifyContent: "center",
   },
   frame: {
-    width: '70%',
-    height: Dimensions.get('window').width * 7/10
+    width: "70%",
+    height: (Dimensions.get("window").width * 7) / 10,
   },
   scanner: {
     ...StyleSheet.absoluteFillObject,
     flex: 1,
     alignItems: "center",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 });
-
 
 export default function App() {
   const [hasPermission, setHasPermission] = useState(null);
-  const [scanning, setScanning] = useState(false)
+  const [scanning, setScanning] = useState(false);
 
   useEffect(() => {
     (async () => {
       const { status } = await BarCodeScanner.requestPermissionsAsync();
-      setHasPermission(status === 'granted');
+      setHasPermission(status === "granted");
     })();
   }, []);
 
   const handleBarCodeScanned = ({ type, data }) => {
-    console.log(type)
+    console.log(type);
     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
-    setScanning(false)
+    setScanning(false);
   };
   const onScan = () => {
-    setScanning(true)
-  }
+    setScanning(true);
+  };
 
   if (hasPermission === null) {
     return <Text>Requesting for camera permission</Text>;
@@ -50,25 +58,28 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {!scanning && <Button
-        onPress={onScan}
-        title="Scan Code"
-        color="#841584"
-        accessibilityLabel="Scan QR code"
-      />}
+      {!scanning && (
+        <Button
+          onPress={onScan}
+          title="Scan Code"
+          color="#841584"
+          accessibilityLabel="Scan QR code"
+        />
+      )}
 
-      {scanning &&
+      {scanning && (
         <>
-
           <BarCodeScanner
             onBarCodeScanned={handleBarCodeScanned}
             style={styles.scanner}
           >
-            <Image source={require('./camera_frame.png')} style={styles.frame} />
+            <Image
+              source={require("./camera_frame.png")}
+              style={styles.frame}
+            />
           </BarCodeScanner>
-
         </>
-      }
+      )}
     </View>
   );
 }
