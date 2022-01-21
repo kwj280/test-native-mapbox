@@ -8,7 +8,7 @@ import {
   Dimensions,
 } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
-
+import { HOST_SERVER } from './util'
 
 //test
 const styles = StyleSheet.create({
@@ -33,6 +33,8 @@ export default function App() {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanning, setScanning] = useState(false);
 
+
+
   useEffect(() => {
     (async () => {
       const { status } = await BarCodeScanner.requestPermissionsAsync();
@@ -41,8 +43,10 @@ export default function App() {
   }, []);
 
   const handleBarCodeScanned = ({ type, data }) => {
-    console.log(type);
     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    fetch(`${data}`).then(res=>res.json()).then(data=>{
+      console.log(data)
+    })
     setScanning(false);
   };
   const onScan = () => {
