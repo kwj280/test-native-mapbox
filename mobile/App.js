@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import MapboxGL from '@react-native-mapbox-gl/maps';
 
-MapboxGL.setAccessToken('pk.eyJ1Ijoid29vamFlIiwiYSI6ImNreWR5b3UxNTBjMGoyb3NoMjk4eXUxbHcifQ.n4z9_obSqP5bOL6Sq-T5tA');
 
 const styles = StyleSheet.create({
   page: {
@@ -21,13 +19,13 @@ const styles = StyleSheet.create({
   }
 });
 
+const HOST_SERVER ='https://brave-swan-12.loca.lt'
+
 export default class App extends Component {
   render() {
     return (
       <View style={styles.page}>
         <View style={styles.container}>
-          <Text>Mapbox</Text>
-          <MapboxGL.MapView style={styles.map} />
         </View>
       </View>
     );

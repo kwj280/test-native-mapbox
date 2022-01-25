@@ -9,7 +9,7 @@ function App() {
       <div style={{ height: "80vh" }}>
         <Map/>
       </div>
-      <QRCode value="http://localhost:5000/api/checkPoint" />,
+      <QRCode value="https://shy-sheep-43.loca.lt/api/quest/Downtown%20Tour%20Calgary" />,
 
     </div>
   );
